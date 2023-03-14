@@ -1,0 +1,49 @@
+{% extends 'layouts/base-entite.html.twig' %}
+ 
+{% block title %}Question index{% endblock %}
+ 
+{% block body %}
+    <div class="container">
+        <h2 class="text-center mt-5 mb-3">Liste des questions</h2>
+        <div class="card">
+
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <tr>
+                        <th>ID</th>
+                        <th>Text</th>
+                        <th>Type</th>
+                        <th>Ordre</th>
+                        <th width="240px">Action</th>
+                    </tr>
+                    {% for question in questions %}
+                    <tr>
+                        <td>{{ question.questionid }}</td>
+                        <td>{{ question.questiontext }}</td>
+                        <td>{{ question.questiontype }}</td>
+                        <td>{{ question.questionorder }}</td>
+                        <td>
+                            <form method="post" action="{{ path('app_question_delete', {'questionid': question.questionid}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+                                <a
+                                    class="btn btn-outline-info"
+                                    href="{{ path('app_question_show', {'questionid': question.questionid}) }}">
+                                    Voir
+                                </a>
+                                <a
+                                    class="btn btn-outline-success"
+                                    href="{{ path('app_question_edit', {'questionid': question.questionid}) }}">
+                                    Editer
+                                </a>
+ 
+                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ question.questionid) }}">
+                                <button class="btn btn-outline-danger">Retirer</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+ 
+{% endblock %}

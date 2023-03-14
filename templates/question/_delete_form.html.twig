@@ -1,0 +1,4 @@
+<form method="post" action="{{ path('app_question_delete', {'questionid': question.questionid}) }}" onsubmit="return confirm('Etes vous sur de supprimer cette question ?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ question.questionid) }}">
+    <button class="btn btn-danger">Supprimer la Question</button>
+</form>

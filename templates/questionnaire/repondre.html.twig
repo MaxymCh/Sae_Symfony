@@ -1,0 +1,42 @@
+{% extends 'layouts/base-entite.html.twig' %}
+
+
+
+{% block title %}Répondre au questionnaire{% endblock %}
+
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+{% endblock %}
+
+
+{% block body %}
+{{ include('layouts/navbar.html.twig') }}
+<div class="repondre mt-4">
+    <h1 class="center"> {{ questionnaire.questionnairename }}</h1>
+    <div class="container">
+        <h2 class="text-center mt-5 mb-3">Q°{{ question.getQuestionorder()+1 }} :  {{ question.getQuestiontext() }}</h2>
+        {{ form_start(form) }}
+        <div class="d-flex justify-content-center">
+            <div class="form-group mt-4 mb-4">
+                {% if question.getQuestionType() == 'text' %}
+                    {{ form_widget(form.answer, {'attr': { 'placeholder': 'Entrez votre réponse ici...'}}) }}
+                {% elseif  question.getQuestionType() == 'dropdown' %}
+                    {{ form_widget(form.answer, {'attr': {'class': "btn btn-light dropdown-toggle"}}) }}
+                {% else %}
+                    {{ form_widget(form.answer, {'attr': {'class': 'before'}}) }}
+                {% endif %}
+            </div>
+        </div>
+        {{ form_widget(form) }}
+
+        <div class="d-flex justify-content-center mt-4 mb-4">
+            <button type="submit" name="action" value="precedent" {% if questionIndex == 0 %}disabled{% endif %} class="btn btn-secondary mr-2">Précédent</button>
+            <button type="submit" name="action" value="suivant" {% if questionIndex == questions|length - 1 %}disabled{% endif %} class="btn btn-primary">Suivant</button>
+        </div>
+
+        {{ form_end(form) }}
+    </div>
+</div>
+{% endblock %}

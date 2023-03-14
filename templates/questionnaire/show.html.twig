@@ -1,0 +1,27 @@
+{% extends 'layouts/base-entite.html.twig' %}
+ 
+{% block title %}Questionnaire{% endblock %}
+ 
+{% block body %}
+    <div class="container">
+        <h2 class="text-center mt-5 mb-3">Mon Questionnaire</h2>
+        <div class="card">
+            <div class="card-header">
+                <a class="btn btn-outline-info float-right" href="{{ path('app_questionnaire_index') }}"> 
+                    Voir tous les questionnaires
+                </a>
+            </div>
+            <div class="card-body">
+                <b class="text-muted">Questionnaireid:</b>
+                <p>{{ questionnaire.questionnaireid }}</p>
+                <b class="text-muted">Questionnairename:</b>
+                <p>{{ questionnaire.questionnairename }}</p>
+                <b class="text-muted">Questionnairedescription:</b>
+                <p>{{ questionnaire.questionnairedescription }}</p>
+            </div>
+        </div>
+    </div>
+    
+{% endblock %}
+
+

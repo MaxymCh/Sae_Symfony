@@ -1,0 +1,10 @@
+{{ form_start(form) }}
+    <div class="form-group">
+        {{ form_row(form.reponsetext, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_row(form.correct, {'attr': {'style': 'width: auto; display: block;'}}) }}
+    </div>
+
+    <button class="btn {{ button_color|default('btn-outline-primary') }}  mt-3">{{ button_label|default('Enregistrer Réponse') }}</button>
+{{ form_end(form) }}

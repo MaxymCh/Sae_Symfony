@@ -1,0 +1,56 @@
+{% extends 'layouts/base-entite.html.twig' %}
+
+
+
+{% block title %}Score du questionnaire{% endblock %}
+
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+{% endblock %}
+
+
+{% block body %}
+{{ include('layouts/navbar.html.twig') }}
+<div class="resultat mt-4">
+    <h1 class="center">Mon score au questionnaire</h1>
+    
+<div class="container">
+<h2>{{ questionnaire.getQuestionnairename() }}</h2>
+
+<h3> Score : {{ score }}/{{ questions.count() }}</h3>
+<h2 class="text-left mt-5 mb-3">Liste des questions:</h2>
+        <div class="card">
+
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <tr>
+                        <th>Numéro</th>
+                        <th>Text</th>
+                        <th>Bonne réponse</th>
+                        <th>Votre réponse</th>
+                    </tr>
+                    {% for question in questions %}
+                    {% set responses_user = rep_user['question_' ~ question.questionid] %}
+                    {% if question.questiontype == "checkbox" %}
+                        {% set responses_user = responses_user|join(', ') %}
+                    {% endif %}
+                    {% if question.getReponsesCorrecteString()|join(', ')  == responses_user %}
+                    <tr class="table-success">
+                    {% else %}
+                    <tr class="table-danger">
+                    {% endif %}
+                        <td>{{ question.questionid }}</td>
+                        <td>{{ question.questiontext }}</td>
+                        <td>{{ question.getReponsesCorrecteString()|join(', ') }}</td>
+                        <td>{{ responses_user }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+</div>
+</div>  
+        
+{% endblock %}

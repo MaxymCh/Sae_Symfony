@@ -1,0 +1,24 @@
+{% extends 'layouts/base-entite.html.twig' %}
+ 
+{% block title %}Reponse{% endblock %}
+ 
+{% block body %}
+    <div class="container">
+        <h2 class="text-center mt-5 mb-3">Voir la Reponse</h2>
+        <div class="card">
+            <div class="card-header">
+                <a class="btn btn-outline-info float-right" href="{{ path('app_reponse_index') }}"> 
+                    Voir toutes les réponses
+                </a>
+            </div>
+            <div class="card-body">
+                <b class="text-muted">Reponseid:</b>
+                <p>{{ reponse.reponseid }}</p>
+                <b class="text-muted">Reponsetext:</b>
+                <p>{{ reponse.reponsetext }}</p>
+                <b class="text-muted">Correct:</b>
+                <p>{{ reponse.correct ? 'Yes' : 'No' }}</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends 'layouts/base-entite.html.twig' %}
+ 
+{% block title %}Reponse index{% endblock %}
+ 
+{% block body %}
+    <div class="container">
+        <h2 class="text-center mt-5 mb-3">Liste des reponses</h2>
+        <div class="card">
+
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <tr>
+                        <th>Reponseid</th>
+                        <th>Reponsetext</th>
+                        <th>Correct</th>
+                        <th>actions</th>
+                    </tr>
+                    {% for reponse in reponses %}
+                    <tr>
+                        <td>{{ reponse.reponseid }}</td>
+                        <td>{{ reponse.reponsetext }}</td>
+                        <td>{{ reponse.correct ? 'Vrai' : 'Faux' }}</td>
+                        <td>
+                            <form method="post" action="{{ path('app_reponse_delete', {'reponseid': reponse.reponseid}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+                                <a
+                                    class="btn btn-outline-info"
+                                    href="{{ path('app_reponse_show', {'reponseid': reponse.reponseid}) }}">
+                                    Voir
+                                </a>
+                                <a
+                                    class="btn btn-outline-success"
+                                    href="{{ path('app_reponse_edit', {'reponseid': reponse.reponseid}) }}">
+                                    Editer
+                                </a>
+ 
+                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ reponse.reponseid) }}">
+                                <button class="btn btn-outline-danger">Retirer</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+ 
+{% endblock %}
+
+
+

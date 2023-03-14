@@ -1,0 +1,27 @@
+{% extends 'layouts/base-entite.html.twig' %}
+ 
+{% block title %}Question{% endblock %}
+ 
+{% block body %}
+    <div class="container">
+        <h2 class="text-center mt-5 mb-3">Voir Question</h2>
+        <div class="card">
+            <div class="card-header">
+                <a class="btn btn-outline-info float-right" href="{{ path('app_question_index') }}"> 
+                    Voir toutes les questions
+                </a>
+            </div>
+            <div class="card-body">
+                <b class="text-muted">Questionid:</b>
+                <p>{{ question.questionid }}</p>
+                <b class="text-muted">Questiontext:</b>
+                <p>{{ question.questiontext }}</p>
+                <b class="text-muted">Questiontype:</b>
+                <p>{{ question.questiontype }}</p>
+                <b class="text-muted">Questionordre:</b>
+                <p>{{ question.questionorder }}</p>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

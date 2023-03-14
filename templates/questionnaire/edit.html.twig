@@ -1,0 +1,28 @@
+{% extends 'layouts/base-entite.html.twig' %}
+{% block title %}Editer Questionnaire{% endblock %}
+{% block body %}
+    <div class="container">
+        <h2 class="text-center mt-5 mb-3">Editer Questionnaire</h2>
+        <div class="card">
+            <div class="card-header">
+                <a class="btn btn-outline-info float-right" href="{{ path('app_questionnaire_index') }}"> 
+                    Voir tous les Questionnaires
+                </a>
+            </div>
+            <div class="card-body">
+                {% include 'questionnaire/_form.html.twig' with {'button_label': 'Sauvegarder le Questionnaire', 'button_color': 'btn-outline-success'}  %}
+            </div>
+            <div class="card-body">
+                {% include 'question/index.html.twig' with {'button_label': 'Voir Question', 'button_color': 'btn-outline-success'}  %}
+            </div>
+            <div class="card-body">
+                <a class="btn btn-outline-primary" href="{{ path('app_question_new', {'questionnaireid': questionnaire.questionnaireid}) }}"> 
+                    Ajouter une Question 
+                </a>
+            </div>
+            <div class="card-body">
+                {% include 'questionnaire/_delete_form.html.twig' with {'button_label': 'Delete Questionnaire', 'button_color': 'btn-outline-success'}  %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

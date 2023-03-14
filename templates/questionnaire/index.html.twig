@@ -1,0 +1,59 @@
+{% extends 'layouts/base-entite.html.twig' %}
+ 
+{% block title %}Questionnaire index{% endblock %}
+ 
+{% block body %}
+    <div class="container">
+        <h2 class="text-center mt-5 mb-3">Vos Questionnaires disponnibles</h2>
+        <div class="card">
+            <div class="card-header">
+                <a class="btn btn-outline-primary" href="{{ path('app_questionnaire_new') }}"> 
+                    Créer un nouveau questionnaire
+                </a>
+
+                <a class="btn btn-outline-primary" href="{{ path('app_questionnaire_export') }}"> 
+                    Exporter les questionnaire en json
+                </a>
+
+                <a class="btn btn-outline-primary" href="{{ path('app_questionnaire_import') }}"> 
+                    Importer les questionnaire en json
+                </a>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <tr>
+                        <th>ID</th>
+                        <th>Nom</th>
+                        <th>Description</th>
+                        <th width="240px">Actions</th>
+                    </tr>
+                    {% for questionnaire in questionnaires %}
+                    <tr>
+                        <td>{{ questionnaire.questionnaireid }}</td>
+                        <td>{{ questionnaire.questionnairename }}</td>
+                        <td>{{ questionnaire.questionnairedescription }}</td>
+                        <td>
+                            <form method="post" action="{{ path('app_questionnaire_delete', {'questionnaireid': questionnaire.questionnaireid}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+                                <a
+                                    class="btn btn-outline-info"
+                                    href="{{ path('app_questionnaire_show', {'questionnaireid': questionnaire.questionnaireid}) }}">
+                                    Voir
+                                </a>
+                                <a
+                                    class="btn btn-outline-success"
+                                    href="{{ path('app_questionnaire_edit', {'questionnaireid': questionnaire.questionnaireid}) }}">
+                                    Editer
+                                </a>
+ 
+                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ questionnaire.questionnaireid) }}">
+                                <button class="btn btn-outline-danger">Enlever</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+ 
+{% endblock %}

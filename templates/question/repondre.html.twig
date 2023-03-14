@@ -1,0 +1,21 @@
+{% extends 'layouts/base-entite.html.twig' %}
+{% block title %}Repondre à la Question{% endblock %}
+{% block body %}
+    <div class="container">
+        <h2 class="text-center mt-5 mb-3">Répondre à la Question</h2>
+        <div class="card">
+                
+            <div class="card-body">
+                <h1> {{question.getQuestiontext()}}</h1>  
+            </div>
+            <div class="card-body">
+                {{ form_start(form) }}
+                    {{ form_label(form.answer) }}
+                    {{ form_widget(form.answer) }}
+                {{ form_end(form) }}
+            </div>
+        </div>
+
+    </div>
+    
+{% endblock %}

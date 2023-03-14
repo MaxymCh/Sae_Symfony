@@ -1,0 +1,50 @@
+DROP TABLE RESULTAT;
+DROP TABLE USER;
+DROP TABLE REPONSE;
+DROP TABLE QUESTION;
+DROP TABLE QUESTIONNAIRE;
+
+
+
+
+CREATE TABLE QUESTIONNAIRE (
+  questionnaireID INT PRIMARY KEY AUTO_INCREMENT,
+  questionnaireName VARCHAR(255) UNIQUE,
+  questionnaireDescription TEXT
+);
+
+CREATE TABLE QUESTION (
+  questionID INT PRIMARY KEY AUTO_INCREMENT,
+  questionText VARCHAR(255),
+  questionType VARCHAR(30),
+  questionnaireID INT,
+  questionOrder INT,
+  FOREIGN KEY (questionnaireID) REFERENCES QUESTIONNAIRE(questionnaireID)
+);
+
+CREATE TABLE REPONSE (
+  reponseID INT PRIMARY KEY AUTO_INCREMENT,
+  reponseText VARCHAR(255),
+  questionID INT,
+  correct BOOLEAN,
+  FOREIGN KEY (questionID) REFERENCES QUESTION(questionID)
+);
+
+/*
+
+CREATE TABLE USER (
+  userID INT PRIMARY KEY AUTO_INCREMENT,
+  userName VARCHAR(255),
+  email VARCHAR(255),
+  Password VARCHAR(255)
+);
+*/
+CREATE TABLE RESULTAT (
+  resultatID INT PRIMARY KEY AUTO_INCREMENT,
+  userID INT,
+  questionnaireID INT,
+  questionnaireDate DATE,
+  score INT,
+  /*FOREIGN KEY (userID) REFERENCES USER(userID),*/
+  FOREIGN KEY (questionnaireID) REFERENCES QUESTIONNAIRE(questionnaireID)
+);

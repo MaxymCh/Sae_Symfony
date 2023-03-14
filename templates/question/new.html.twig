@@ -1,0 +1,20 @@
+
+{% extends 'layouts/base-entite.html.twig' %}
+ 
+{% block title %}Nouvelle Question{% endblock %}
+ 
+{% block body %}
+    <div class="container">
+        <h2 class="text-center mt-5 mb-3">Creer Question</h2>
+        <div class="card">
+            <div class="card-header">
+                <a class="btn btn-outline-info float-right" href="{{ path('app_question_index') }}"> 
+                    Voir toutes les questions
+                </a>
+            </div>
+            <div class="card-body">
+                 {{ include('question/_form.html.twig') }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
