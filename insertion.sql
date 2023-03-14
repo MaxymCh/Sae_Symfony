@@ -1,4 +1,4 @@
-INSERT INTO QUESTIONNAIRE (questionnaireID, questionnaireName, questionnaireDescription) VALUES 
+INSERT INTO questionnaire (id, questionnairename, questionnairedescription) VALUES 
 (1,"Test 1","ORLEANS"),
 (2,"Test 2","ORLEANS"),
 (3,"Test 3","ORLEANS"),
@@ -7,13 +7,13 @@ INSERT INTO QUESTIONNAIRE (questionnaireID, questionnaireName, questionnaireDesc
 (6,"Test 6","ORLEANS"),
 (7,"Test 7","ORLEANS");
 
-INSERT INTO QUESTION (questionID, questionText, questionType, questionnaireID, questionOrder) VALUES 
+INSERT INTO question (id, questiontext, questiontype, questionnaire_id, questionorder) VALUES 
 (1,"Qui sont les fréres de Luffy ?","checkbox", 1, 0),
 (2,"Lequel est mort à Marine Ford ?","radio",1 ,1),
 (3,"Qui est le personnage principal ?(seulemnt le prénom)","text",1,2),
 (4,"Quel Shichibukai est le rival de Shanks ?","dropdown",1,3);
 
-INSERT INTO REPONSE (reponseID, reponseText, questionID, correct) VALUES
+INSERT INTO reponse (id, reponsetext, question_id, correct) VALUES
 (1,"Ace", 1, true),
 (2,"Garp", 1, false),
 (3,"Shanks", 1, false),

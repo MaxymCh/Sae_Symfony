@@ -13,9 +13,6 @@ class Reponse
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column]
-    private ?int $reponseid = null;
-
     #[ORM\Column(length: 255)]
     private ?string $reponsetext = null;
 
@@ -26,19 +23,14 @@ class Reponse
     #[ORM\JoinColumn(nullable: false)]
     private ?Question $question = null;
 
-    public function getId(): ?int
+    public function getReponseid(): ?int
     {
         return $this->id;
     }
 
-    public function getReponseid(): ?int
+    public function setReponseid(int $id): self
     {
-        return $this->reponseid;
-    }
-
-    public function setReponseid(int $reponseid): self
-    {
-        $this->reponseid = $reponseid;
+        $this->id = $id;
 
         return $this;
     }

@@ -6,6 +6,7 @@
     <div class="container">
         <h2 class="text-center mt-5 mb-3">Vos Questionnaires disponnibles</h2>
         <div class="card">
+            {% if is_granted("ROLE_ADMIN") %}
             <div class="card-header">
                 <a class="btn btn-outline-primary" href="{{ path('app_questionnaire_new') }}"> 
                     Créer un nouveau questionnaire
@@ -19,6 +20,7 @@
                     Importer les questionnaire en json
                 </a>
             </div>
+            {% endif %}
             <div class="card-body">
                 <table class="table table-bordered">
                     <tr>
@@ -39,6 +41,14 @@
                                     href="{{ path('app_questionnaire_show', {'questionnaireid': questionnaire.questionnaireid}) }}">
                                     Voir
                                 </a>
+                                {% if is_granted("ROLE_USER") %}
+                                <a
+                                    class="btn btn-outline-success"
+                                    href="{{ path('app_questionnaire_repondre', {'questionnaireid': questionnaire.questionnaireid, "indiceQuestion": 0}) }}">
+                                    Repondre
+                                </a>
+
+                                {% else %}
                                 <a
                                     class="btn btn-outline-success"
                                     href="{{ path('app_questionnaire_edit', {'questionnaireid': questionnaire.questionnaireid}) }}">
@@ -47,6 +57,8 @@
  
                                 <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ questionnaire.questionnaireid) }}">
                                 <button class="btn btn-outline-danger">Enlever</button>
+                                {% endif %}
+                                
                             </form>
                         </td>
                     </tr>

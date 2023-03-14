@@ -15,9 +15,6 @@ class Question
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column]
-    private ?int $questionid = null;
-
     #[ORM\Column(length: 255)]
     private ?string $questiontext = null;
 
@@ -39,19 +36,14 @@ class Question
         $this->reponses = new ArrayCollection();
     }
 
-    public function getId(): ?int
+    public function getQuestionid(): ?int
     {
         return $this->id;
     }
 
-    public function getQuestionid(): ?int
+    public function setQuestionid(int $id): self
     {
-        return $this->questionid;
-    }
-
-    public function setQuestionid(int $questionid): self
-    {
-        $this->questionid = $questionid;
+        $this->id = $id;
 
         return $this;
     }

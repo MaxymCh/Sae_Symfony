@@ -16,9 +16,6 @@ class Questionnaire
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column]
-    private ?int $questionnaireid = null;
-
     #[ORM\Column(length: 255)]
     private ?string $questionnairename = null;
 
@@ -33,19 +30,15 @@ class Questionnaire
         $this->questions = new ArrayCollection();
     }
 
-    public function getId(): ?int
+
+    public function getQuestionnaireid(): ?int
     {
         return $this->id;
     }
 
-    public function getQuestionnaireid(): ?int
+    public function setQuestionnaireid(int $id): self
     {
-        return $this->questionnaireid;
-    }
-
-    public function setQuestionnaireid(int $questionnaireid): self
-    {
-        $this->questionnaireid = $questionnaireid;
+        $this->id = $id;
 
         return $this;
     }
