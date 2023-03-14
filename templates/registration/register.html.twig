@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 
-<title>Register</title>
+<title>S'enregistrer</title>
 
 {% block body %}
-    <h1>Register</h1>
+    <h1>S'enregistrer</h1>
 
     {{ form_start(registrationForm) }}
         {{ form_row(registrationForm.email) }}
@@ -12,6 +12,6 @@
         }) }}
         {{ form_row(registrationForm.agreeTerms) }}
 
-        <button type="submit" class="btn">Register</button>
+        <button type="submit" class="btn">S'enregistrer</button>
     {{ form_end(registrationForm) }}
 {% endblock %}
