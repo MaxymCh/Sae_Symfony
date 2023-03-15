@@ -1,19 +1,9 @@
 {% extends 'layouts/base-entite.html.twig' %}
 
-
-
 {% block title %}Score du questionnaire{% endblock %}
-
-
-{% block stylesheets %}
-    {{ parent() }}
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-{% endblock %}
-
 
 {% block body %}
 {{ include('layouts/navbar.html.twig') }}
-<div class="resultat mt-4">
     <h1 class="center">Mon score au questionnaire</h1>
     
 <div class="container">
@@ -51,6 +41,5 @@
             </div>
         </div>
 </div>
-</div>  
         
 {% endblock %}
