@@ -9,9 +9,11 @@ use Doctrine\ORM\Mapping as ORM;
 class Reponse
 {
     #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column]
-    private ?int $id = null;
+    #[ORM\GeneratedValue(strategy: "AUTO")]
+    #[ORM\Column(name: "reponseid", type: "integer", options: ["unsigned" => true])]
+    private ?int $reponseid = null;
+
+    
 
     #[ORM\Column(length: 255)]
     private ?string $reponsetext = null;
@@ -20,17 +22,17 @@ class Reponse
     private ?bool $correct = null;
 
     #[ORM\ManyToOne(inversedBy: 'reponses')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(onDelete:"CASCADE",nullable: false, referencedColumnName: "questionid")]
     private ?Question $question = null;
 
     public function getReponseid(): ?int
     {
-        return $this->id;
+        return $this->reponseid;
     }
 
-    public function setReponseid(int $id): self
+    public function setReponseid(int $reponseid): self
     {
-        $this->id = $id;
+        $this->reponseid = $reponseid;
 
         return $this;
     }

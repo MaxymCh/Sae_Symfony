@@ -10,10 +10,12 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: QuestionRepository::class)]
 class Question
 {
+
     #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column]
-    private ?int $id = null;
+    #[ORM\GeneratedValue(strategy: "AUTO")]
+    #[ORM\Column(name: "questionid", type: "integer", options: ["unsigned" => true])]
+    private ?int $questionid = null;
+
 
     #[ORM\Column(length: 255)]
     private ?string $questiontext = null;
@@ -25,7 +27,7 @@ class Question
     private ?int $questionorder = null;
 
     #[ORM\ManyToOne(inversedBy: 'questions')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: false, referencedColumnName: "questionnaireid", onDelete:"CASCADE")]
     private ?Questionnaire $questionnaire = null;
 
     #[ORM\OneToMany(mappedBy: 'question', targetEntity: Reponse::class)]
@@ -38,12 +40,12 @@ class Question
 
     public function getQuestionid(): ?int
     {
-        return $this->id;
+        return $this->questionid;
     }
 
-    public function setQuestionid(int $id): self
+    public function setQuestionid(int $questionid): self
     {
-        $this->id = $id;
+        $this->questionid = $questionid;
 
         return $this;
     }

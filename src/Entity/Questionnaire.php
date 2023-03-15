@@ -12,9 +12,10 @@ use Doctrine\ORM\Mapping as ORM;
 class Questionnaire
 {
     #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column]
-    private ?int $id = null;
+    #[ORM\GeneratedValue(strategy: "AUTO")]
+    #[ORM\Column(name: "questionnaireid", type: "integer", options: ["unsigned" => true])]
+    private ?int $questionnaireid = null;
+
 
     #[ORM\Column(length: 255)]
     private ?string $questionnairename = null;
@@ -33,12 +34,12 @@ class Questionnaire
 
     public function getQuestionnaireid(): ?int
     {
-        return $this->id;
+        return $this->questionnaireid;
     }
 
-    public function setQuestionnaireid(int $id): self
+    public function setQuestionnaireid(int $questionnaireid): self
     {
-        $this->id = $id;
+        $this->questionnaireid = $questionnaireid;
 
         return $this;
     }

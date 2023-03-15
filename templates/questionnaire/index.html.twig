@@ -1,4 +1,11 @@
 {% extends 'layouts/base-entite.html.twig' %}
+
+
+{% block stylesheets %}
+ {{ parent() }}
+ <link rel="stylesheet" href="{{ asset('css/styleQuestionnaireIndex.css') }}">
+{% endblock %}
+
  
 {% block title %}Questionnaire index{% endblock %}
  
@@ -44,7 +51,7 @@
                                 {% if is_granted("ROLE_ELEVE") %}
                                 <a
                                     class="btn btn-outline-success"
-                                    href="{{ path('app_questionnaire_repondre', {'id': questionnaire.questionnaireid, "indiceQuestion": 0}) }}">
+                                    href="{{ path('app_questionnaire_repondre', {'questionnaireid': questionnaire.questionnaireid, "indiceQuestion": 0}) }}">
                                     Repondre
                                 </a>
 

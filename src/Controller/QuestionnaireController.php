@@ -226,7 +226,7 @@ class QuestionnaireController extends AbstractController
         return $this->redirectToRoute('app_questionnaire_index', [], Response::HTTP_SEE_OTHER);
     }
 
-    #[Route('/{id}/repondre/{indiceQuestion}', name: 'app_questionnaire_repondre', methods: ['GET', 'POST'])]
+    #[Route('/{questionnaireid}/repondre/{indiceQuestion}', name: 'app_questionnaire_repondre', methods: ['GET', 'POST'])]
     public function repondre(Questionnaire $questionnaire, Request $request, int $indiceQuestion): Response
     {
         $session = $request->getSession();
@@ -286,7 +286,7 @@ class QuestionnaireController extends AbstractController
             
 
             return $this->redirectToRoute('app_questionnaire_repondre', [
-            'id' => $questionnaire->getQuestionnaireid(),
+            'questionnaireid' => $questionnaire->getQuestionnaireid(),
             'indiceQuestion' => $indiceQuestion,
             ]);
         }
