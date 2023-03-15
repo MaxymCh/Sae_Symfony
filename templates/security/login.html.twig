@@ -2,6 +2,12 @@
 
 {% block title %}Connexion{% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+{% endblock %}
+
+
 {% block body %}
 <form method="post">
     {% if error %}
@@ -39,4 +45,10 @@
         Se connecter
     </button>
 </form>
+
+<div>
+    <p> Pas encore de Compte ?</p>
+    <a class="btn btn-link" href="{{ path('app_register') }}"> 
+        S'enregistrer</a>
+</div>
 {% endblock %}
