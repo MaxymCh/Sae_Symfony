@@ -1,7 +1,12 @@
 {% extends 'layouts/base-entite.html.twig' %}
  
 {% block title %}Questionnaire{% endblock %}
- 
+ {% block stylesheets %}
+  {{ parent() }}
+  <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+{% endblock %}
+{% block header %}
+{% endblock %}
 {% block body %}
 {{ include('layouts/navbar.html.twig') }}
     <div class="container">

@@ -1,8 +1,11 @@
 {% extends 'layouts/base-entite.html.twig' %}
 {% block title %}Editer Reponse{% endblock %}
-{% block body %}{% block body %}
+ {% block stylesheets %}
+  {{ parent() }}
+  <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+{% endblock %}
+{% block body %}
 {{ include('layouts/navbar.html.twig') }}
-    <h1>Editer Reponse</h1>
     <div class="container">
         <h2 class="text-center mt-5 mb-3">Editer Reponse</h2>
         <div class="card">
