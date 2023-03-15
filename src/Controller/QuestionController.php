@@ -102,30 +102,6 @@ class QuestionController extends AbstractController
     }
 
 
-    #[Route('/{questionid}/repondre', name: 'app_question_repondre', methods: ['GET', 'POST'])]
-    public function repondre(Request $request, Question $question, EntityManagerInterface $entityManager): Response
-    {
-        $answer = new RepondreQuestion();
-        $answer->setQuestion($question);
-        $form = $this->createForm(RepondreQuestionType::class, $answer, ['answer' => $question]);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->flush();
-
-            return $this->redirectToRoute('app_questionnaire_show', ['questionnaireid' => $question->getQuestionnaire()->getQuestionnaireid()]);
-
-            #return $this->redirectToRoute('app_question_index', [], Response::HTTP_SEE_OTHER);
-        }
-
-        $reponses = $question->getReponses();
-        return $this->renderForm('question/repondre.html.twig', [
-            'question' => $question,
-            'form' => $form,
-            'reponses' => $reponses,
-        ]);
-    }
-
     #[Route('/{questionid}', name: 'app_question_delete', methods: ['POST'])]
     public function delete(Request $request, Question $question, EntityManagerInterface $entityManager): Response
     {
