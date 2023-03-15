@@ -44,7 +44,7 @@
                                 {% if is_granted("ROLE_USER") %}
                                 <a
                                     class="btn btn-outline-success"
-                                    href="{{ path('app_questionnaire_repondre', {'questionnaireid': questionnaire.questionnaireid, "indiceQuestion": 0}) }}">
+                                    href="{{ path('app_questionnaire_repondre', {'id': questionnaire.questionnaireid, "indiceQuestion": 0}) }}">
                                     Repondre
                                 </a>
 

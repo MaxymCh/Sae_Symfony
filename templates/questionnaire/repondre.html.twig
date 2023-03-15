@@ -33,7 +33,7 @@
 
         <div class="d-flex justify-content-center mt-4 mb-4">
             <button type="submit" name="action" value="precedent" {% if questionIndex == 0 %}disabled{% endif %} class="btn btn-secondary mr-2">Précédent</button>
-            <button type="submit" name="action" value="suivant" {% if questionIndex == questions|length - 1 %}disabled{% endif %} class="btn btn-primary">Suivant</button>
+            <button type="submit" name="action" value="suivant" {% if questionIndex == questions|length %}disabled{% endif %} class="btn btn-primary">Suivant</button>
         </div>
 
         {{ form_end(form) }}

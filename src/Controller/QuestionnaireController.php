@@ -53,7 +53,7 @@ class QuestionnaireController extends AbstractController
                     $reponse = [
                         //'id' => $reponse->getReponseid(),
                         'texte' => $reponse->getReponsetext(),
-                        'correcte' => $reponse->getCorrect(),
+                        'correcte' => $reponse->isCorrect(),
                     ];
                     array_push($reponses, $reponse);
                 }
@@ -226,7 +226,7 @@ class QuestionnaireController extends AbstractController
         return $this->redirectToRoute('app_questionnaire_index', [], Response::HTTP_SEE_OTHER);
     }
 
-    #[Route('/{questionnaireid}/repondre/{indiceQuestion}', name: 'app_questionnaire_repondre', methods: ['GET', 'POST'])]
+    #[Route('/{id}/repondre/{indiceQuestion}', name: 'app_questionnaire_repondre', methods: ['GET', 'POST'])]
     public function repondre(Questionnaire $questionnaire, Request $request, int $indiceQuestion): Response
     {
 
@@ -272,7 +272,7 @@ class QuestionnaireController extends AbstractController
             // Redirection vers la question suivante
             $indiceQuestion += 1;
             return $this->redirectToRoute('app_questionnaire_repondre', [
-            'questionnaireid' => $questionnaire->getQuestionnaireid(),
+            'id' => $questionnaire->getQuestionnaireid(),
             'indiceQuestion' => $indiceQuestion,
             ]);
         }

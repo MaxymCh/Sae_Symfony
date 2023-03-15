@@ -118,7 +118,7 @@ class Question
     {
 		$reponsesCorrecte = [];
 		foreach ($this->reponses as $reponse) {
-            if($reponse->getCorrect()){
+            if($reponse->isCorrect()){
 				array_push($reponsesCorrecte, $reponse->getReponsetext());
 			}
         }
@@ -132,7 +132,7 @@ class Question
     {
 		$reponsesCorrecte = [];
 		foreach ($this->reponses as $reponse) {
-            if($reponse->getCorrect()){
+            if($reponse->isCorrect()){
 				array_push($reponsesCorrecte, $reponse);
 			}
         }

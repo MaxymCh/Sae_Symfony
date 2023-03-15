@@ -36,7 +36,7 @@
                     {% if question.questiontype == "checkbox" %}
                         {% set responses_user = responses_user|join(', ') %}
                     {% endif %}
-                    {% if question.getReponsesCorrecteString()|join(', ')  == responses_user %}
+                    {% if question.getReponsesCorrecteString()|join(', ')|lower   == responses_user|lower  %}
                     <tr class="table-success">
                     {% else %}
                     <tr class="table-danger">
