@@ -347,6 +347,7 @@ class QuestionnaireController extends AbstractController
             
         } 
     }
+    $session->set('questionnaire_'.$questionnaire->getQuestionnaireid(), []);
     
     
     return $this->render('questionnaire/resultat.html.twig', [
