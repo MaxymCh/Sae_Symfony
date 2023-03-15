@@ -8,6 +8,7 @@
 {% endblock %}
 
 {% block body %}
+{{ include('layouts/navbar.html.twig') }}
   <div class="center">
     <div class="container">
       <h1 class="h3 mb-3 font-weight-normal">Connexion</h1>
@@ -51,5 +52,4 @@
         <a class="btn btn-link" href="{{ path('app_register') }}">S'enregistrer</a>
       </div>
     </div>
-  </div>
 {% endblock %}
