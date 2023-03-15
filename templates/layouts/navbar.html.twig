@@ -24,11 +24,11 @@
     </button>
     <div class="collapse navbar-collapse" id="000navbarSupportedContent">
       <ul class="navbar-nav ms-auto align-items-center">
+        {% if is_granted('ROLE_USER') %}
         <li class="nav-item">
           <a class="nav-link mx-2" href="/questionnaire">Accueil</a>
         </li>
         <li class="nav-item ms-3">
-        {% if is_granted('ROLE_USER') %}
            <a
               class="nav-link mx-2"
               href="{{ path('app_logout') }}">
