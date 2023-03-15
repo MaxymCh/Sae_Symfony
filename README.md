@@ -1,16 +1,12 @@
-# Sae_Symfony Quizz en symfony
-
-##Charpentier Maxym
-##Jory Jonathan
-
-
-
-
-
-
-
 Symfony Application Web Quizz
 ========================
+
+## Membres
+### Charpentier Maxym
+### Jory Jonathan
+
+------------
+## Présentation
 
 L'application web quizz est une application composé de 2 modules.
 Module 1: Création de questionnaires, composé de questions et réponses
