@@ -40,7 +40,8 @@ class RepondreQuestionType extends AbstractType
                 'multiple' => false,
             ]);
         } elseif ($question->getQuestiontype() === 'text') {
-            $builder->add('answer', TextType::class);
+            $builder->add('answer', TextType::class, [
+            ]);
         }
         /*$builder->add('save', SubmitType::class, array(
             'label' => 'Suivantt',

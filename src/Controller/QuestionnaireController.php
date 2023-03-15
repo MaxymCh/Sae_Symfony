@@ -229,9 +229,6 @@ class QuestionnaireController extends AbstractController
     #[Route('/{id}/repondre/{indiceQuestion}', name: 'app_questionnaire_repondre', methods: ['GET', 'POST'])]
     public function repondre(Questionnaire $questionnaire, Request $request, int $indiceQuestion): Response
     {
-
-
-
         $session = $request->getSession();
         // Récupération des questions du questionnaire
         $questions = $questionnaire->getQuestions();
@@ -240,21 +237,28 @@ class QuestionnaireController extends AbstractController
             // TODO : Calcul du score
             return $this->calculerScore($questionnaire, $request);
 
-        }
-
-       
+        }       
         // Si l'indice de la question est supérieur ou égal au nombre de questions,
         // alors on a répondu à toutes les questions, on peut calculer le score
         
+
+
         // Récupération de la question correspondant à l'indice donné
         $question = $questions[$indiceQuestion];
 
         // Création du formulaire pour répondre à la question
         $answer = new RepondreQuestion();
         $answer->setQuestion($question);
+
+        $listeReponseQuestionnaire = $session->get('questionnaire_'.$questionnaire->getQuestionnaireid(), []);
+        $reponsePrecedente = $listeReponseQuestionnaire['question_'.$question->getQuestionid()] ?? null;
+        if ($reponsePrecedente) {
+            // Préremplissage de la réponse de l'utilisateur dans le formulaire
+            $answer->setAnswer($reponsePrecedente);
+        }
+
         $form = $this->createForm(RepondreQuestionType::class, $answer, ['answer' => $question]);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
 
             //$ancienne_reponse_questionnaire = $session->get('questionnaire_'.$questionnaire->getQuestionnaireid());
@@ -262,15 +266,25 @@ class QuestionnaireController extends AbstractController
             //    $session->set('questionnaire_'.$questionnaire->getQuestionnaireid(), []);
             //}
 
-            $listeReponseQuestionnaire = $session->get('questionnaire_'.$questionnaire->getQuestionnaireid(), []);
+            //$listeReponseQuestionnaire = $session->get('questionnaire_'.$questionnaire->getQuestionnaireid(), []);
             $listeReponseQuestionnaire['question_'.$question->getQuestionid()] = $answer->getAnswer();
             $session->set('questionnaire_'.$questionnaire->getQuestionnaireid(), $listeReponseQuestionnaire);
             // $session->set('questionnaire_'.$questionnaire->getQuestionnaireid(), $score_questionnaire+1);
 
 
-            // Sauvegarde de la réponse à la question
-            // Redirection vers la question suivante
-            $indiceQuestion += 1;
+
+            $action = $request->request->get('action');            
+
+            if ($action == 'suivant') {
+                // Redirection vers la question suivante
+                $indiceQuestion += 1;
+            } elseif ($action == 'precedent') {
+                // Redirection vers la question précedente
+                $indiceQuestion -= 1;
+            }
+            
+            
+
             return $this->redirectToRoute('app_questionnaire_repondre', [
             'id' => $questionnaire->getQuestionnaireid(),
             'indiceQuestion' => $indiceQuestion,
