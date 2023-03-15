@@ -1,6 +1,14 @@
-<!DOCTYPE html>
 
-<title>S'enregistrer</title>
+{% extends 'layouts/base-entite.html.twig' %}
+
+{% block title %}S'enregistrer{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+{% endblock %}
+
+
 
 {% block body %}
     <h1>S'enregistrer</h1>
@@ -14,4 +22,9 @@
 
         <button type="submit" class="btn">S'enregistrer</button>
     {{ form_end(registrationForm) }}
+    <div>
+        <p> Déjà un Compte ?</p>
+        <a class="btn btn-link" href="{{ path('app_login') }}"> 
+            Se Connecter</a>
+    </div>
 {% endblock %}
