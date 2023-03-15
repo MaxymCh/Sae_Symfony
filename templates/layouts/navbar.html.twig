@@ -1,8 +1,8 @@
 <!-- Navbar -->
-<link rel="stylesheet" href="{{ asset('css/style.css') }}">
+<link rel="stylesheet" href="{{ asset('css/styleNavBar.css') }}">
 {% block navbar %}
 <nav class="navbar navbar-expand-lg fixed-top navbar-light mb-4">
-  <div class="container">
+  <div class="nav-container">
     <a class="navbar-brand" href=""
       ><img
         id="logo"
@@ -30,13 +30,13 @@
         <li class="nav-item ms-3">
         {% if is_granted('ROLE_USER') %}
            <a
-              class="nav-link mx-2 btn btn-outline-success"
+              class="nav-link mx-2"
               href="{{ path('app_logout') }}">
               Se déconnecter
           </a>
         {% else %}
           <a
-              class="nav-link mx-2 btn btn-outline-success"
+              class="nav-link mx-2"
               href="{{ path('app_login') }}">
               Se connecter
           </a>

@@ -4,6 +4,11 @@
   S'enregistrer
 {% endblock %}
 
+{% block stylesheets %}
+  {{ parent() }}
+  <link rel="stylesheet" href="{{ asset('css/styleRegister.css') }}">
+{% endblock %}
+
 {% block body %}
 {{ include('layouts/navbar.html.twig') }}
   <div class="center">
@@ -28,9 +33,16 @@
           {{ form_row(registrationForm.agreeTerms, {
               label: 'Accepter les termes'}) }}
 
-          {{ form_row(registrationForm.role) }}
+          {{ form_row(registrationForm.role, {
+    'label_attr': {
+        'class': 'radio-label'
+    },
+    'label': 'Role',
+    'widget_type': 'inline'
+}) }}
+
           
-          <button type="submit" class="btn btn-light mt-2 mb-2">S'enregistrer</button>
+          <button type="submit" class="btn btn-outline-dark btn-rounded">S'enregistrer</button>
         {{ form_end(registrationForm) }}
         <div>
           <p> Déjà un Compte ?</p>

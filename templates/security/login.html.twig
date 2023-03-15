@@ -42,14 +42,15 @@
         </div>
         #}
 
-        <button class="btn btn-light mt-2" type="submit">
+        <button class="btn btn-outline-dark btn-rounded" type="submit">
           Se connecter
         </button>
       </form>
 
-      <div>
-        <p> Pas encore de Compte ?</p>
-        <a class="btn btn-link" href="{{ path('app_register') }}">S'enregistrer</a>
-      </div>
+      <div class="text-container">
+  <p> Pas encore de Compte ?</p>
+  <a class="btn btn-link" href="{{ path('app_register') }}">S'enregistrer</a>
+</div>
+
     </div>
 {% endblock %}
