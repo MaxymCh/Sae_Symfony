@@ -86,11 +86,6 @@
   .form-row {
     width: 100%;
   }
-  .radio-label {
-    display: flex;
-  flex-direction: row-reverse;
-  align-items: center; 
-}
 
 
   

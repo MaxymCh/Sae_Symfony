@@ -33,13 +33,7 @@
           {{ form_row(registrationForm.agreeTerms, {
               label: 'Accepter les termes'}) }}
 
-          {{ form_row(registrationForm.role, {
-    'label_attr': {
-        'class': 'radio-label'
-    },
-    'label': 'Role',
-    'widget_type': 'inline'
-}) }}
+          {{ form_row(registrationForm.role) }}
 
           
           <button type="submit" class="btn btn-outline-dark btn-rounded">S'enregistrer</button>
