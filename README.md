@@ -41,11 +41,11 @@ Fonctionnalités
 Une application web permettant de présenter des quizs et des questions et de vérifier
 les réponses fournies par les utilisateurs.
 
-— import/export de quizs et de questions en JSON.
-— paramètrage et présentation des quizs.
-— Système de login pour les utilisateurs.
-— Mot de passe chiffré dans la BDD.
-— CRUD sur les questionnaires, questions, réponses.
-— système d'inscription des utilisateurs.
-— Possibilité de retour en arrière dans un questionnaore.
-— Les réponses sont sauvegardés et préremplie si l'utilsateur revient en arrière ou si il quitte et renvien sur le questionnaire. 
+* import/export de quizs et de questions en JSON.
+* paramètrage et présentation des quizs.
+* Système de login pour les utilisateurs.
+* Mot de passe chiffré dans la BDD.
+* CRUD sur les questionnaires, questions, réponses.
+* système d'inscription des utilisateurs.
+* Possibilité de retour en arrière dans un questionnaore.
+* Les réponses sont sauvegardés et préremplie si l'utilsateur revient en arrière ou si il quitte et renvien sur le questionnaire. 
