@@ -48,4 +48,4 @@ les réponses fournies par les utilisateurs.
 — CRUD sur les questionnaires, questions, réponses.
 — système d'inscription des utilisateurs.
 — Possibilité de retour en arrière dans un questionnaore.
-— Les réponses sont sauvegardés et préremplie si l'utilsateur revient en arrière ou si il quitte et renvien sur le questionnaire.
+— Les réponses sont sauvegardés et préremplie si l'utilsateur revient en arrière ou si il quitte et renvien sur le questionnaire. 
